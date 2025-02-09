@@ -51,7 +51,7 @@ export default function ProjectsGrid({ items }) {
       <div className="flex gap-4 w-full justify-end items-center mb-8">
         <button
           onClick={() => setIsOpen(true)}
-          className="no-underline text-[2rem] transition-colors duration-300 ease-in-out relative after:content-[&quot;&quot;] after:absolute after:bottom-0 after:w-full after:h-[1px] after:left-0 after:bg-current after:origin-left after:scale-x-0 hover:after:scale-x-100 after:transition-transform after:duration-300"
+          className="relative before:block before:absolute before:w-5 before:h-5 before:bg-glorious before:left-0 pl-8 before:top-2/4 before:-translate-y-2/4 before:rounded-full before:border before:border-foreground no-underline text-[2rem] transition-colors duration-300 ease-in-out relative after:content-[&quot;&quot;] after:absolute after:bottom-0 after:w-full after:h-[1px] after:left-0 after:bg-current after:origin-left after:scale-x-0 hover:after:scale-x-100 after:transition-transform after:duration-300"
         >
           Filter Projects
         </button>
@@ -59,7 +59,7 @@ export default function ProjectsGrid({ items }) {
 
       {/* Slide-Over Drawer */}
       <div
-        className={`fixed inset-0 z-50 transition-opacity duration-500 ${
+        className={`fixed inset-0 z-[100] transition-opacity duration-500 ${
           isOpen ? 'opacity-100 pointer-events-auto' : 'opacity-0 pointer-events-none'
         }`}
         aria-hidden={!isOpen}
@@ -74,7 +74,7 @@ export default function ProjectsGrid({ items }) {
 
         <div className="fixed inset-0 overflow-hidden">
           <div className="absolute inset-0 overflow-hidden">
-            <div className="pointer-events-none  fixed inset-y-0 right-0 flex w-1/3 pl-10">
+            <div className="pointer-events-none  fixed inset-y-0 right-0 flex w-full lg:w-1/3 pl-10">
               <div
                 className={`pointer-events-auto relative w-screen backdrop-blur-md  transform transition-transform ease-in-out duration-500 ${
                   isOpen ? 'translate-x-0' : 'translate-x-full'

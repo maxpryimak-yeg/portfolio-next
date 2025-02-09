@@ -1,28 +1,41 @@
 "use client";
 
+import { useState, useEffect } from 'react';
 import Navbar from '../components/Navbar';
 import AnimatedHeadline from '../components/AnimatedHeadline';
 import Image from 'next/image';
 import FormspreeForm from '../components/FormspreeForm';
-import { Dialog, DialogPanel, Transition } from '@headlessui/react';
-import { useState, Fragment } from 'react';
 import { faXmark } from '@awesome.me/kit-34cea924a0/icons/sharp/light';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { AnimatePresence, motion } from 'framer-motion';
 
 export default function ContactPage() {
   const [isOpen, setIsOpen] = useState(false);
+
+  useEffect(() => {
+    if (isOpen) {
+      document.body.style.overflow = 'hidden';
+    } else {
+      document.body.style.overflow = 'unset';
+    }
+
+    // Cleanup function to reset overflow when component unmounts
+    return () => {
+      document.body.style.overflow = 'unset';
+    };
+  }, [isOpen]);
 
   return (
     <div>
       <Navbar />
       <main className="lg:px-16 px-5 pt-20 lg:pb-44 pb-20">
         <div className='flex flex-col lg:flex-row'>
-        <div className="py-16 max-w-[100rem]">
-          <AnimatedHeadline 
-            tag="h1" 
-            className="leading-5 text-[4rem]" 
-            text="At The Glorious Agency, we create high-impact websites that engage, perform, and evolve with your brand."
-          />
+          <div className="py-16 max-w-[100rem]">
+            <AnimatedHeadline 
+              tag="h1" 
+              className="leading-5 text-[4rem]" 
+              text="At The Glorious Agency, we create high-impact websites that engage, perform, and evolve with your brand."
+            />
           </div>
           <div className='hidden lg:flex flex-1 text-center flex justify-center items-center'>
             <Image
@@ -44,32 +57,27 @@ export default function ContactPage() {
           </button>
         </div>
 
-        <Transition appear show={isOpen} as={Fragment}>
-          <Dialog onClose={() => setIsOpen(false)} className="relative z-50">
-            <Transition.Child
-              as={Fragment}
-              enter="ease-out duration-300"
-              enterFrom="opacity-0"
-              enterTo="opacity-100"
-              leave="ease-in duration-200"
-              leaveFrom="opacity-100"
-              leaveTo="opacity-0"
+        <AnimatePresence mode="wait">
+          {isOpen && (
+            <motion.div
+              initial={{ opacity: 0, backdropFilter: 'blur(0px)' }}
+              animate={{ opacity: 1, backdropFilter: 'blur(8px)' }}
+              exit={{ opacity: 0, backdropFilter: 'blur(0px)' }}
+              transition={{ duration: 0.2 }}
+              className="fixed inset-0 flex w-screen items-center justify-center p-4 z-[60]"
+              style={{
+                backgroundColor: 'rgba(244, 244, 241, 0.5)',
+              }}
             >
-              <div className="fixed inset-0 " aria-hidden="true" />
-            </Transition.Child>
-
-            <div className="fixed inset-0 flex w-screen  backdrop-blur-md  items-center justify-center p-4">
-              <Transition.Child
-                as={Fragment}
-                enter="ease-out duration-300"
-                enterFrom="opacity-0 scale-95"
-                enterTo="opacity-100 scale-100"
-                leave="ease-in duration-200"
-                leaveFrom="opacity-100 scale-100"
-                leaveTo="opacity-0 scale-95"
+              <motion.div 
+                className="shadow-2xl max-w-5xl bg-background mx-auto rounded-2xl lg:p-14 p-8"
+                initial={{ opacity: 0, scale: 0.95 }}
+                animate={{ opacity: 1, scale: 1 }}
+                exit={{ opacity: 0, scale: 0.95 }}
+                transition={{ duration: 0.2 }}
               >
-                <DialogPanel className="shadow-2xl max-w-5xl bg-background mx-auto rounded-2xl backdrop-blur-md  transform transition-transform ease-in-out duration-500 translate-x-0 p-14">
-                <div className='flex justify-between align-center mb-14'><svg
+                <div className='flex justify-between align-center mb-14'>
+                  <svg
   width="80"
   height="22"
   viewBox="0 0 110 22"
@@ -109,18 +117,20 @@ export default function ContactPage() {
     fill="#121212"
   />
 </svg>
-
-
-   <FontAwesomeIcon className='px-4 py-3 hover:bg-glorious cursor-pointer rounded-full' icon={faXmark} onClick={() => setIsOpen(false)}/>
-</div>
-
-                  <p className='mb-14 text-4xl'>Please fill out the form below, and we will get in touch with you a.s.a.p.</p>
-                  <FormspreeForm />
-                </DialogPanel>
-              </Transition.Child>
-            </div>
-          </Dialog>
-        </Transition>
+                  <FontAwesomeIcon 
+                    className='px-4 py-3 hover:bg-glorious text-3xl cursor-pointer rounded-full' 
+                    icon={faXmark} 
+                    onClick={() => setIsOpen(false)}
+                  />
+                </div>
+                <p className='mb-14 lg:text-4xl text-3xl'>
+                  Please fill out the form below, and we will get in touch with you a.s.a.p.
+                </p>
+                <FormspreeForm />
+              </motion.div>
+            </motion.div>
+          )}
+        </AnimatePresence>
       </main>
     </div>
   );

@@ -22,7 +22,7 @@ export default function FormspreeForm({ className = '' }) {
       <div>
         <label
           htmlFor="name"
-          className="block text-3xl mb-2"
+          className="block lg:text-3xl text-2xl mb-2"
         >
           What is your name?
         </label>
@@ -38,7 +38,7 @@ export default function FormspreeForm({ className = '' }) {
       <div>
         <label
           htmlFor="email"
-          className="block text-3xl mb-2"
+          className="block lg:text-3xl text-2xl mb-2"
         >
           Please enter an email address for contact.
         </label>
@@ -54,7 +54,7 @@ export default function FormspreeForm({ className = '' }) {
       <div>
         <label
           htmlFor="message"
-          className="block text-3xl mb-2"
+          className="block lg:text-3xl text-2xl mb-2"
         >
           Please tell us a little about the project and its needs.
         </label>

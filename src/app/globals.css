@@ -13,34 +13,20 @@
   --border-color: rgb(139 139 139 / 50%);
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-    --lightgrey: #d3d3d3;
-  }
-}
 html {
   font-size: 10px;
+  color-scheme: light;
 }
 
 body {
   color: var(--foreground);
   font-family: var(--font-universal-sans);
   font-size: 1.6rem;
-}
-#pagebody {
-  transition: background-color 0.3s ease-in-out;
-  
-}
-.dark {
-  background: var(--foreground);
-  color: var(--background);
-  
+  background-color: var(--background);
 }
 
-.dark * {
-  border-color: var(--background);
+#pagebody {
+  transition: background-color 0.3s ease-in-out;
 }
 
 @media screen and (min-width: 1024px) {
@@ -117,6 +103,8 @@ body {
   transform: translateX(100%) !important;
 }
 
-
+.case-content p {
+  margin-bottom: 1.2rem;
+}
 
  

@@ -254,7 +254,7 @@ export default async function ProjectPage({ params }) {
           </div>
           <div className="w-full max-w-5xl">
         <h2 className='mb-4 font-medium'>{project.askSubHeading}</h2>
-        <div className="text-grey  leading-[2.5rem]">
+        <div className="text-grey  leading-[2.5rem] case-content">
   <PortableText value={project.askContent} />
 </div>
         </div>
@@ -389,7 +389,7 @@ export default async function ProjectPage({ params }) {
           </div>
         <div className="w-full max-w-5xl">
         <h2 className='mb-4 font-medium'>{project.deliverySubHeading}</h2>
-        <div className="text-grey  leading-[2.5rem]">
+        <div className="text-grey  leading-[2.5rem] case-content">
   <PortableText value={project.deliveryContent} />
 </div>
         </div>
@@ -524,7 +524,7 @@ export default async function ProjectPage({ params }) {
           </div>
         <div className="w-full max-w-5xl">
         <h2 className='mb-4 font-medium'>{project.takeawaySubHeading}</h2>
-        <div className="text-grey  leading-[2.5rem]">
+        <div className="text-grey  leading-[2.5rem] case-content">
   <PortableText value={project.takeawayContent} />
 </div>
         </div>
