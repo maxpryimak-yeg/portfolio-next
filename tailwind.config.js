@@ -10,6 +10,11 @@ module.exports = {
       colors: {
         background: "var(--background)",
         foreground: "var(--foreground)",
+        lightgrey: "var(--lightgrey)",
+        grey: "var(--grey)",
+        glorious: "var(--primary)",
+        backdrop_background: "var(--backdrop-background)",
+        glorious_border: "var(--border-color)",
       },
     },
   },
