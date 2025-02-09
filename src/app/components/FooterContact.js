@@ -20,8 +20,13 @@ export default function FooterContact() {
               </Link>
             </h2>
         <div className=''>
-        <p className='text-white max-w-2xl mb-10'>Ready to bring your vision to life? Whether you have a clear vision or just a spark of an idea, let's explore what drives you—together.</p>
-        <Link href="mailto:hello@theglorious.agency" className="lg:text-[1.8rem] lg:leading-[1.8rem] text-2xl inline-block text-black md:py-7 md:px-8 px-6 py-5 rounded-full bg-glorious hover:bg-foreground hover:text-white transition-background duration-200">Let's Chat</Link>
+        <p className='text-white max-w-2xl mb-10'>Ready to bring your vision to life? Whether you have a clear vision or just a spark of an idea, let&apos;s explore what drives you—together.</p>
+        <Link 
+          href="mailto:hello@theglorious.agency" 
+          className="lg:text-[1.8rem] lg:leading-[1.8rem] text-2xl inline-block text-black md:py-7 md:px-8 px-6 py-5 rounded-full bg-glorious hover:bg-foreground hover:text-white transition-background duration-200"
+        >
+          Let&apos;s Chat
+        </Link>
         </div>
       </div>
       </FadeInBottom>
