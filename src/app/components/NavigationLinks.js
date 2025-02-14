@@ -2,28 +2,43 @@
 
 import Link from 'next/link';
 import AnchorLink from './AnchorLink';
+import { usePathname } from 'next/navigation';
 
-export default function NavigationLinks({ isTransparent }) {
-    const linkClasses = `no-underline lg:text-[2rem] text-4xl transition-colors duration-300 ease-in-out relative after:content-[&quot;&quot;] after:absolute after:bottom-0 after:w-full after:h-[1px] after:left-0 after:bg-current after:origin-left after:scale-x-0 hover:after:scale-x-100 after:transition-transform after:duration-300 ${
-      isTransparent ? 'hover:text-glorious' : ''
-    }`;
+export default function NavigationLinks() {
+    const pathname = usePathname();
+
+    const isCurrentPath = (path) => {
+        if (path === '/#expertise') {
+            return pathname === '/' || pathname === '/#expertise';
+        }
+        return pathname === path;
+    };
 
     return (
-      <ul className="flex ld:[gap:3.2rem] gap-20 flex-col lg:flex-row">
+      <ul className="flex gap-10 flex-col lg:flex-row">
         <li>
-          <Link href="/" className={linkClasses}>Home</Link>
+          <Link 
+            href="/about" 
+            className={`desktop-menu-link ${isCurrentPath('/about') ? 'current' : ''}`}
+          >
+            About
+          </Link>
         </li>
         <li>
-          <Link href="/about" className={linkClasses}>About</Link>
+          <Link 
+            href="/projects" 
+            className={`desktop-menu-link ${isCurrentPath('/projects') ? 'current' : ''}`}
+          >
+            Projects
+          </Link>
         </li>
         <li>
-          <Link href="/projects" className={linkClasses}>Projects</Link>
-        </li>
-        <li>
-          <AnchorLink href="/#expertise" className={linkClasses}>Expertise</AnchorLink>
-        </li>
-        <li>
-          <Link href="/contact" className={linkClasses}>Contact</Link>
+          <AnchorLink 
+            href="/#expertise" 
+            className={`desktop-menu-link ${isCurrentPath('/#expertise') ? 'current' : ''}`}
+          >
+            Expertise
+          </AnchorLink>
         </li>
       </ul>
     );

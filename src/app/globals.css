@@ -1,9 +1,65 @@
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
+@import 'tailwindcss';
+@plugin "daisyui";
+
+@theme {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-lightgrey: var(--lightgrey);
+  --color-grey: var(--grey);
+  --color-glorious: var(--primary);
+  --color-backdrop_background: var(--backdrop-background);
+  --color-glorious_border: var(--border-color);
+}
+
+/*
+  The default border color has changed to `currentColor` in Tailwind CSS v4,
+  so we've added these compatibility styles to make sure everything still
+  looks the same as it did with Tailwind CSS v3.
+
+  If we ever want to remove these styles, we need to add an explicit border
+  color utility to any element that depends on these defaults.
+*/
+@layer base {
+  *,
+  ::after,
+  ::before,
+  ::backdrop,
+  ::file-selector-button {
+    border-color: var(--color-gray-200, currentColor);
+  }
+}
+
+.btn {
+  @apply uppercase text-[11px] font-medium h-auto py-1 border-glorious_border font-mono rounded-xs;
+}
+p {
+  font-family: var(--font-glorious);
+}
+.btn-main {
+  @apply bg-glorious;
+}
+.floating-text {
+  @apply  text-[12px] font-mono font-medium;
+}
+.desktop-menu-link {
+  @apply uppercase text-[12px] font-mono relative pl-3 before:absolute before:w-[5px] before:h-[5px] before:bg-foreground before:rounded-full before:left-0 before:top-1/2 before:-translate-y-1/2 before:opacity-0 hover:before:opacity-100 before:transition-all before:duration-100 before:ease-in-out;
+}
+.xs-mono {
+  @apply uppercase text-[12px] font-mono;
+}
+
+.desktop-menu-link.current {
+  @apply before:opacity-100;
+}
+
+.section-title {
+  @apply font-mono text-[12px] uppercase;
+}
+.section-title-md {
+  @apply font-mono text-[14px] uppercase font-medium;
+}
 
 :root {
-  --font-universal-sans: gloriousSans, sans-serif;
   --primary: #EAFF01;
   --background: #F4F4F1;
   --foreground: #121212;
@@ -14,25 +70,18 @@
 }
 
 html {
-  font-size: 10px;
   color-scheme: light;
+  font-size: 16px;
 }
 
 body {
   color: var(--foreground);
-  font-family: var(--font-universal-sans);
-  font-size: 1.6rem;
   background-color: var(--background);
+  font-family: var(--font-antonia);
 }
 
 #pagebody {
   transition: background-color 0.3s ease-in-out;
-}
-
-@media screen and (min-width: 1024px) {
-  body {
-      font-size: 2rem;
-  }
 }
 
 .slide {

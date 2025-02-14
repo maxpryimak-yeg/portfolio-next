@@ -64,7 +64,7 @@ export default function ContactPage() {
               animate={{ opacity: 1, backdropFilter: 'blur(8px)' }}
               exit={{ opacity: 0, backdropFilter: 'blur(0px)' }}
               transition={{ duration: 0.2 }}
-              className="fixed inset-0 flex w-screen items-center justify-center p-4 z-[60]"
+              className="fixed inset-0 flex w-screen items-center justify-center p-4 z-60"
               style={{
                 backgroundColor: 'rgba(244, 244, 241, 0.5)',
               }}

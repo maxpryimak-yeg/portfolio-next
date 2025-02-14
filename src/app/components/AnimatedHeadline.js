@@ -45,10 +45,10 @@ const AnimatedHeadline = ({ text, duration = 0.6, tag: Tag = 'h1', className = '
       {words.map((word, index) => (
         <div
           key={index}
-          className="single-word-wrapper relative inline-block h-[3rem] lg:h-[5rem] overflow-hidden" // Wrapper for overflow-hidden
+          className="single-word-wrapper relative inline-block h-12 overflow-hidden" // Wrapper for overflow-hidden
         >
           <motion.div
-            className="single-word-inner relative inline-block whitespace-nowrap translate-y-full text-4xl lg:text-[4rem] leading-[2rem] lg:leading-[5.6rem]" // Inner div for animation
+            className="single-word-inner relative inline-block whitespace-nowrap  text-5xl leading-3xl" // Inner div for animation
             initial="initial"
             animate={isVisible ? 'animate' : 'initial'} // Animate only if visible
             transition={{

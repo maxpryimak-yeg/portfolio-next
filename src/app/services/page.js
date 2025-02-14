@@ -12,7 +12,7 @@ export default function ServicesPage() {
       </div>
       <section className="flex mt-40">
           <div className="flex-1"><h2 className="text-[1.5rem] uppercase font-medium ">1. Design</h2></div>
-          <div className="flex-1"><p className="text-grey text-[1.8rem] leading-[2.5rem] max-w-screen-lg">
+          <div className="flex-1"><p className="text-grey text-[1.8rem] leading-[2.5rem] max-w-(--breakpoint-lg)">
           For us, every project is a chance to build something meaningful. We craft websites that go beyond aesthetics, blending function with purpose to elevate each brand’s story. At The Glorious Agency, we’re driven by a shared goal—helping our clients thrive in a digital world that’s always evolving.</p></div>
          </section>
         </main>

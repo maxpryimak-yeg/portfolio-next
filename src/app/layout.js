@@ -1,8 +1,8 @@
-import localFont from "next/font/local";
 import "./globals.css";
 import Footer from './components/Footer';
 import FooterContact from './components/FooterContact';
 import PageAnimatePresence from './components/HOC/PageAnimatePresence';
+import { antoniaVariable, robotoMono, gloriousSans } from './fonts';
 
 export const metadata = {
   title: 'The Glorious Agency - Powering Your Growth with Digital Solutions That Deliver',
@@ -17,26 +17,12 @@ export const metadata = {
   },
 };
 
-export const gloriousSans = localFont({
-  src: [
-    {
-      path: './fonts/GloriousSans.woff2',
-      weight: '400',
-      style: 'normal',
-    },
-    {
-      path: './fonts/GloriousSans-medium.woff2',
-      weight: '500',
-      style: 'normal',
-    },
-  ],
-  variable: '--font-glorious-sans',
-  display: 'swap',
-});
-
 const ClientLayout = ({ children }) => {
   return (
-    <html lang="en" className={gloriousSans.className}>
+    <html lang="en" className={`${antoniaVariable.variable} ${robotoMono.variable} ${gloriousSans.variable}`}>
+      <head>
+        <link rel="stylesheet" href="https://use.typekit.net/muo6nza.css" />
+      </head>
       <body className="antialiased bodyBg">
         <PageAnimatePresence>
           <div className="relative">

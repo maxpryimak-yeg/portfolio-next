@@ -71,7 +71,7 @@ export default function MobileNav({ setIsNavOpen, alwaysWhite }) {
     <div className="lg:hidden">
       <button
         onClick={handleToggle}
-        className={`px-4 py-2 uppercase text-2xl font-medium rounded-full transition-all duration-300 relative z-[60] ${
+        className={`px-4 py-2 uppercase text-2xl font-medium rounded-full transition-all duration-300 relative z-60 ${
           isOpen || alwaysWhite
           ? 'text-white' 
           : 'text-black'

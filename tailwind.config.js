@@ -16,7 +16,12 @@ module.exports = {
         backdrop_background: "var(--backdrop-background)",
         glorious_border: "var(--border-color)",
       },
+      fontFamily: {
+        'antonia': ['var(--font-antonia)'],
+        'mono': ['var(--font-mono)'],
+        'glorious': ['var(--font-glorious)'],
+      },
     },
   },
   plugins: [],
-};
+}; 

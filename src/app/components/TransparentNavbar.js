@@ -24,12 +24,12 @@ export default function TransparentNavbar() {
 
   return (
     <motion.div 
-      className='lg:px-[2rem] lg:py-[1.2rem] pb-0 absolute w-full z-[55]'
+      className='lg:px-[2rem] lg:py-[1.2rem] pb-0 absolute w-full z-55'
       initial={navbarAnimation.initial}
       animate={navbarAnimation.animate}
     >
       <nav className="text-white flex justify-between items-center px-5 pt-8 lg:[padding:3rem_2rem] transition-all duration-300 ease-in-out">
-        <div className="relative z-[60]">
+        <div className="relative z-60">
           <Link href="/" aria-label="Go to homepage">
             <svg 
               width="110" 

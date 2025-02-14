@@ -5,6 +5,8 @@ import { motion } from 'framer-motion';
 import NavigationLinks from './NavigationLinks.js';
 import MobileNav from './MobileNav';
 import { useState } from 'react';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faArrowTurnDownRight } from '@awesome.me/kit-34cea924a0/icons/sharp/light';
 
 // Animation configuration for fade-in from top to bottom
 const navbarAnimation = {
@@ -24,15 +26,15 @@ export default function Navbar() {
 
   return (
     <motion.div
-      className="lg:px-[2rem] lg:py-[1.2rem] pb-0 relative z-[55]"
+      className="px-6 py-5 bg-background z-55 border-b border-glorious_border fixed top-0 left-0 w-full"
       initial={navbarAnimation.initial}
       animate={navbarAnimation.animate}
     >
-      <nav className="px-5 pt-8 bg-gloriouss rounded-[1.8rem] text-black flex justify-between items-center lg:[padding:3rem_2rem] w-full transition-all duration-300 ease-in-out">
-        <div className="relative z-[60]">
+      <nav className="text-black flex justify-between items-center w-full transition-all duration-300 ease-in-out">
+        <div className="relative z-60">
           <Link href="/" aria-label="Go to homepage">
           <svg
-  width="110"
+  width="80"
   height="22"
   viewBox="0 0 110 22"
   fill="none"
@@ -77,6 +79,9 @@ export default function Navbar() {
         <div className='hidden lg:block'>
           <NavigationLinks />
         </div>
+          <Link href="/contact" className="btn btn-main">
+          <FontAwesomeIcon icon={faArrowTurnDownRight} />
+          Contact</Link>
         <MobileNav setIsNavOpen={setIsNavOpen} />
       </nav>
     </motion.div>

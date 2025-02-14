@@ -59,7 +59,7 @@ export default function ProjectsGrid({ items }) {
 
       {/* Slide-Over Drawer */}
       <div
-        className={`fixed inset-0 z-[100] transition-opacity duration-500 ${
+        className={`fixed inset-0 z-100 transition-opacity duration-500 ${
           isOpen ? 'opacity-100 pointer-events-auto' : 'opacity-0 pointer-events-none'
         }`}
         aria-hidden={!isOpen}
@@ -90,7 +90,7 @@ export default function ProjectsGrid({ items }) {
                   <button
                     type="button"
                     onClick={() => setIsOpen(false)}
-                    className="relative flex w-12 h-12  hover:bg-glorious justify-center items-center text-black bg-white rounded-full  text-black focus:outline-none focus:ring-2 focus:ring-black"
+                    className="relative flex w-12 h-12  hover:bg-glorious justify-center items-center text-black bg-white rounded-full  text-black focus:outline-hidden focus:ring-2 focus:ring-black"
                   >
                     <span className="sr-only">Close panel</span>
                     <FontAwesomeIcon icon={faXmark} />
@@ -159,8 +159,8 @@ export default function ProjectsGrid({ items }) {
            <FadeInBottom disableWhileInView key={item._id}>
           <div
             key={item._id}
-            className={`before:absolute before:bottom-0 before:left-0 before:w-full before:h-1/2 before:pointer-events-none before:bg-gradient-to-t before:from-[rgba(0,0,0,0.3)] before:via-transparent before:to-transparent before:z-20 relative group ${
-              index % 3 === 1 ? 'aspect-[4/5]' : 'aspect-square'
+            className={`before:absolute before:bottom-0 before:left-0 before:w-full before:h-1/2 before:pointer-events-none before:bg-linear-to-t before:from-[rgba(0,0,0,0.3)] before:via-transparent before:to-transparent before:z-20 relative group ${
+              index % 3 === 1 ? 'aspect-4/5' : 'aspect-square'
             } rounded-[1.6rem] overflow-hidden`}
            
           >

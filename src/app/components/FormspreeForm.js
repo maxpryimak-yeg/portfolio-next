@@ -31,7 +31,7 @@ export default function FormspreeForm({ className = '' }) {
           name="name"
           id="name"
           required
-          className="w-full bg-backdrop_background border border-gray-300 rounded-lg px-4 py-3 text-gray-700 focus:outline-none focus:shadow-md"
+          className="w-full bg-backdrop_background border border-gray-300 rounded-lg px-4 py-3 text-gray-700 focus:outline-hidden focus:shadow-md"
         />
       </div>
 
@@ -47,7 +47,7 @@ export default function FormspreeForm({ className = '' }) {
           name="email"
           id="email"
           required
-          className="w-full bg-backdrop_background border border-gray-300 rounded-lg px-4 py-3 text-gray-700 focus:outline-none focus:shadow-md"
+          className="w-full bg-backdrop_background border border-gray-300 rounded-lg px-4 py-3 text-gray-700 focus:outline-hidden focus:shadow-md"
         />
       </div>
 
@@ -63,7 +63,7 @@ export default function FormspreeForm({ className = '' }) {
           id="message"
           rows="5"
           required
-          className="w-full bg-backdrop_background border border-gray-300 rounded-lg px-4 py-3 text-gray-700 focus:outline-none focus:shadow-md"
+          className="w-full bg-backdrop_background border border-gray-300 rounded-lg px-4 py-3 text-gray-700 focus:outline-hidden focus:shadow-md"
         ></textarea>
       </div>
 

@@ -30,7 +30,7 @@ export default function ProgressCircle() {
   
     return (
       <div
-        className="group fixed z-[9999] top-5 md:left-8 left-5 w-20 h-20 cursor-pointer mix-blend-difference"
+        className="group fixed z-9999 top-5 md:left-8 left-5 w-20 h-20 cursor-pointer mix-blend-difference"
         onClick={handleBackClick}
         role="button"
         aria-label="Go back"

@@ -15,8 +15,8 @@ export default function HomepageWorkSection({ items }) {
           <FadeInBottom key={item._id} delay={index * 0.1}>
           <div
             key={item._id}
-            className={`relative before:absolute before:bottom-0 before:left-0 before:w-full before:h-1/2 before:pointer-events-none before:bg-gradient-to-t before:from-[rgba(0,0,0,0.3)] before:via-transparent before:to-transparent before:z-20 relative group ${
-              index % 3 === 1 ? 'aspect-[4/5]' : 'aspect-square'
+            className={`relative before:absolute before:bottom-0 before:left-0 before:w-full before:h-1/2 before:pointer-events-none before:bg-linear-to-t before:from-[rgba(0,0,0,0.3)] before:via-transparent before:to-transparent before:z-20 relative group ${
+              index % 3 === 1 ? 'aspect-4/5' : 'aspect-square'
             } rounded-[1.6rem] overflow-hidden`}
           >
             {item.slug?.current ? (

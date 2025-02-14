@@ -10,7 +10,7 @@ export default function FooterContact() {
         <div className='bg-background lg:px-8 lg:pb-10 px-5 pb-5 rounded-bl-[2.5rem] rounded-br-[2.5rem]'>
         <FadeInBottom>
         <div className="bg-[#167e64] text-white flex lg:flex-row flex-col lg:gap-80 lg:px-12  px-5  py-32 rounded-[2rem]">
-            <h2 className="flex-1 w-full lg:text-[15rem] lg:leading-[15rem] max-w-screen-lg text-[7rem] leading-[7rem] mb-10 lg:mb-0">
+            <h2 className="flex-1 w-full lg:text-[15rem] lg:leading-[15rem] max-w-(--breakpoint-lg) text-[7rem] leading-[7rem] mb-10 lg:mb-0">
               <Link 
                 href="mailto:hello@theglorious.agency" 
                 className="relative inline-block group"

@@ -19,7 +19,7 @@ const HeroHeadline = ({ duration = 0.6 }) => {
   };
 
   return (
-    <h1 className="split-words justify-start hero-headline flex-wrap text-white text-6xl leading-[3rem] lg:text-9xl lg:leading-[7rem] flex max-w-screen-xl gap-[1rem] text-center">
+    <h1 className="split-words justify-start hero-headline flex-wrap text-white text-6xl leading-[3rem] lg:text-9xl lg:leading-[7rem] flex max-w-(--breakpoint-xl) gap-[1rem] text-center">
       {words.map((word, index) => (
         <div
           key={index}
