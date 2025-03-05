@@ -23,5 +23,16 @@ module.exports = {
       },
     },
   },
-  plugins: [],
+  plugins: [
+    require("daisyui")
+  ],
+  daisyui: {
+    themes: ["light"],
+    darkTheme: "light",
+    base: true,
+    styled: true,
+    utils: true,
+    logs: false,
+    themeRoot: ":root",
+  },
 }; 

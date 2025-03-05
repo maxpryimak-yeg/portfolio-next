@@ -29,6 +29,22 @@
   }
 }
 
+/* Force light theme for all DaisyUI components */
+[data-theme="dark"] {
+  color-scheme: light !important;
+}
+
+/* Override any dark theme styles */
+:root {
+  --primary: #EAFF01;
+  --background: #F4F4F1;
+  --foreground: #121212;
+  --lightgrey: #d3d3d3;
+  --grey: #8B8B8B;
+  --backdrop-background: rgba(211,211,211,0.5);
+  --border-color: rgb(139 139 139 / 50%);
+}
+
 html {
   background-color: #F4F4F1;
   scroll-behavior: smooth;
@@ -85,16 +101,6 @@ p {
 }
 .section-title-md {
   @apply font-mono text-[14px] uppercase font-medium;
-}
-
-:root {
-  --primary: #EAFF01;
-  --background: #F4F4F1;
-  --foreground: #121212;
-  --lightgrey: #d3d3d3;
-  --grey: #8B8B8B;
-  --backdrop-background: rgba(211,211,211,0.5);
-  --border-color: rgb(139 139 139 / 50%);
 }
 
 html {

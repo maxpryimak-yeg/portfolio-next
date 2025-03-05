@@ -19,7 +19,7 @@ export const metadata = {
 
 const ClientLayout = ({ children }) => {
   return (
-    <html lang="en" className={`${antoniaVariable.variable} ${robotoMono.variable} ${gloriousSans.variable}`}>
+    <html lang="en" data-theme="light" className={`${antoniaVariable.variable} ${robotoMono.variable} ${gloriousSans.variable}`}>
       <head>
         <link rel="stylesheet" href="https://use.typekit.net/muo6nza.css" />
       </head>
