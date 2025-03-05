@@ -24,7 +24,21 @@ export default async function Page() {
     services[] { label, value },
     orderRank
   }`;
-const homepageWorkSectionItems = await client.fetch(homepageWorkSectionQuery);
+
+  // Fetch posts for Recent Projects slider
+  const recentProjectsQuery = `*[_type == "portfolio" && "hero-slider" in categories] {
+    _id,
+    slug,
+    mainHeadline,
+    heroImage,
+    description
+  }`;
+
+  const [homepageWorkSectionItems, recentProjects] = await Promise.all([
+    client.fetch(homepageWorkSectionQuery),
+    client.fetch(recentProjectsQuery)
+  ]);
+
   return (
     <div>
         <NavBar />
@@ -60,7 +74,7 @@ const homepageWorkSectionItems = await client.fetch(homepageWorkSectionQuery);
             </div> 
           </div>
           <div className="order-first lg:order-last lg:w-xl w-full flex-1">
-            <RecentProjects />
+            <RecentProjects projects={recentProjects} />
           </div>
         </section>
         <section id="expertise" className="relative flex border-b border-glorious_border">

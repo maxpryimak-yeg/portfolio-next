@@ -1,29 +1,14 @@
 'use client';
 
-import { useState, useEffect } from 'react';
-import { client } from '../../../lib/sanityClient';
+import { useState } from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faCaretLeft, faCaretRight } from '@awesome.me/kit-34cea924a0/icons/sharp/solid';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import { Navigation } from 'swiper/modules';
 import 'swiper/css';
 
-export default function TestimonialSlider() {
-  const [testimonials, setTestimonials] = useState([]);
+export default function TestimonialSlider({ testimonials = [] }) {
   const [swiper, setSwiper] = useState(null);
-
-  useEffect(() => {
-    const fetchTestimonials = async () => {
-      const query = `*[_type == "client" && defined(testimonial) && testimonial != ""] {
-        _id,
-        testimonial
-      }`;
-      const data = await client.fetch(query);
-      setTestimonials(data);
-    };
-
-    fetchTestimonials();
-  }, []);
 
   const handlePrev = () => {
     if (swiper) {
@@ -58,7 +43,7 @@ export default function TestimonialSlider() {
           onSwiper={setSwiper}
           modules={[Navigation]}
           speed={800}
-          loop={true}
+          loop={testimonials.length > 1}
           slidesPerView={1}
           effect="slide"
           direction="horizontal"
@@ -66,7 +51,7 @@ export default function TestimonialSlider() {
         >
           {testimonials.map((testimonial) => (
             <SwiperSlide key={testimonial._id}>
-                <p>{testimonial.testimonial}</p>
+                <p className="text-lg">{testimonial.testimonial}</p>
             </SwiperSlide>
           ))}
         </Swiper>

@@ -1,7 +1,7 @@
 'use client';
 
-import { useState, useEffect } from 'react';
-import { client, urlFor } from '../../../lib/sanityClient';
+import { useState } from 'react';
+import { urlFor } from '../../../lib/sanityClient';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faCaretLeft, faCaretRight, faArrowTurnDownRight } from '@awesome.me/kit-34cea924a0/icons/sharp/solid';
 import Link from 'next/link';
@@ -16,30 +16,13 @@ const springConfig = {
   mass: 0.5       // Added lower mass for lighter feel
 };
 
-export default function RecentProjects() {
-  const [projects, setProjects] = useState([]);
+export default function RecentProjects({ projects = [] }) {
   const [isHovered, setIsHovered] = useState(false);
   const mouseX = useMotionValue(0);
   const mouseY = useMotionValue(0);
   const springX = useSpring(mouseX, springConfig);
   const springY = useSpring(mouseY, springConfig);
   const [swiper, setSwiper] = useState(null);
-
-  useEffect(() => {
-    const fetchProjects = async () => {
-      const query = `*[_type == "portfolio" && "hero-slider" in categories] {
-        _id,
-        slug,
-        mainHeadline,
-        heroImage,
-        description
-      }`;
-      const data = await client.fetch(query);
-      setProjects(data);
-    };
-
-    fetchProjects();
-  }, []);
 
   const handleMouseMove = (e) => {
     const rect = e.currentTarget.getBoundingClientRect();
@@ -89,8 +72,9 @@ export default function RecentProjects() {
         >
           <p className="floating-text mb-4">{project.mainHeadline}</p>
           <div className="btn backdrop-blur-lg text-white shadow-none border-none bg-white/20 w-full">
-          <FontAwesomeIcon icon={faArrowTurnDownRight} />
-            View Project</div>
+            <FontAwesomeIcon icon={faArrowTurnDownRight} />
+            View Project
+          </div>
         </motion.div>
       </div>
     );
@@ -122,7 +106,7 @@ export default function RecentProjects() {
           onSwiper={setSwiper}
           modules={[Navigation]}
           speed={800}
-          loop={true}
+          loop={projects.length > 1}
           slidesPerView={1}
           effect="slide"
           direction="horizontal"
