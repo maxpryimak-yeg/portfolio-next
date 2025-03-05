@@ -4,9 +4,10 @@ import { useState } from 'react';
 import { urlFor } from '../../../lib/sanityClient';
 import Image from 'next/image';
 import Link from 'next/link';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faXmark } from '@awesome.me/kit-34cea924a0/icons/sharp/light'
-import { faArrowUpRight } from '@awesome.me/kit-34cea924a0/icons/sharp/light'
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faXmark } from '@awesome.me/kit-34cea924a0/icons/sharp/light';
+import { faArrowUpRight } from '@awesome.me/kit-34cea924a0/icons/sharp/light';
+import FadeInBottom from './FadeInBottom';
 
 export default function ProjectsGrid({ items }) {
   const ITEMS_PER_PAGE = 6; // Number of items to load per click
@@ -48,20 +49,17 @@ export default function ProjectsGrid({ items }) {
     <div className="work-section-container">
       {/* Filter and Clear Buttons */}
       <div className="flex gap-4 w-full justify-end items-center mb-8">
-      
         <button
           onClick={() => setIsOpen(true)}
-          className="no-underline text-[2rem] transition-colors duration-300 ease-in-out relative after:content-[&quot;&quot;] after:absolute after:bottom-0 after:w-full after:h-[1px] after:left-0 after:bg-current after:origin-left after:scale-x-0 hover:after:scale-x-100 after:transition-transform after:duration-300"
+          className="relative before:block before:absolute before:w-5 before:h-5 before:bg-glorious before:left-0 pl-8 before:top-2/4 before:-translate-y-2/4 before:rounded-full before:border before:border-foreground no-underline text-[2rem] transition-colors duration-300 ease-in-out relative after:content-[&quot;&quot;] after:absolute after:bottom-0 after:w-full after:h-[1px] after:left-0 after:bg-current after:origin-left after:scale-x-0 hover:after:scale-x-100 after:transition-transform after:duration-300"
         >
           Filter Projects
-         
         </button>
-       
       </div>
 
       {/* Slide-Over Drawer */}
       <div
-        className={`fixed inset-0 z-50 transition-opacity duration-500 ${
+        className={`fixed inset-0 z-100 transition-opacity duration-500 ${
           isOpen ? 'opacity-100 pointer-events-auto' : 'opacity-0 pointer-events-none'
         }`}
         aria-hidden={!isOpen}
@@ -76,7 +74,7 @@ export default function ProjectsGrid({ items }) {
 
         <div className="fixed inset-0 overflow-hidden">
           <div className="absolute inset-0 overflow-hidden">
-            <div className="pointer-events-none  fixed inset-y-0 right-0 flex w-1/3 pl-10">
+            <div className="pointer-events-none  fixed inset-y-0 right-0 flex w-full lg:w-1/3 pl-10">
               <div
                 className={`pointer-events-auto relative w-screen backdrop-blur-md  transform transition-transform ease-in-out duration-500 ${
                   isOpen ? 'translate-x-0' : 'translate-x-full'
@@ -158,11 +156,13 @@ export default function ProjectsGrid({ items }) {
       {/* Project Grid */}
       <div className="work-section grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
         {visibleProjects.map((item, index) => (
+           <FadeInBottom disableWhileInView key={item._id}>
           <div
             key={item._id}
-            className={` before:absolute before:bottom-0 before:left-0 before:w-full before:h-1/2 before:pointer-events-none before:bg-linear-to-t before:from-[rgba(0,0,0,0.3)] before:via-transparent before:to-transparent before:z-20 relative group ${
+            className={`before:absolute before:bottom-0 before:left-0 before:w-full before:h-1/2 before:pointer-events-none before:bg-linear-to-t before:from-[rgba(0,0,0,0.3)] before:via-transparent before:to-transparent before:z-20 relative group ${
               index % 3 === 1 ? 'aspect-4/5' : 'aspect-square'
             } rounded-[1.6rem] overflow-hidden`}
+           
           >
             {item.slug?.current ? (
               <Link
@@ -178,6 +178,7 @@ export default function ProjectsGrid({ items }) {
               </div>
             )}
           </div>
+          </FadeInBottom>
         ))}
       </div>
 
@@ -222,7 +223,10 @@ function Content({ item, hasInnerPage = false }) {
         <div className="mt-auto flex justify-between items-center">
           <h3 className="text-white text-5xl">{item.title}</h3>
           {hasInnerPage && (
-            <FontAwesomeIcon className="text-[2.8rem] text-white group-hover:-translate-y-1 translate-y-1 group-hover:translate-x-1 duration-200" icon={faArrowUpRight} />
+            <FontAwesomeIcon
+              className="text-[2.8rem] text-white group-hover:-translate-y-1 group-hover:text-glorious translate-y-1 group-hover:translate-x-1 duration-200"
+              icon={faArrowUpRight}
+            />
           )}
         </div>
       </div>

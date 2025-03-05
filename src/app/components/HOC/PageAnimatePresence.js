@@ -88,7 +88,7 @@ const PageAnimatePresence = ({ children }) => {
 
   return (
     <AnimatePresence mode="wait" onExitComplete={handleExitComplete}>
-      <motion.div key={pathname} className="relative overflow-hidden motion-div">
+      <motion.div key={pathname} className="relative motion-div">
         {/* Slide animation */}
         <motion.div
           className="slide fixed top-0 left-0 w-full h-full bg-white z-50"

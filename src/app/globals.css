@@ -29,8 +29,18 @@
   }
 }
 
+html {
+  background-color: #F4F4F1;
+  scroll-behavior: smooth;
+}
 .btn {
   @apply uppercase text-[11px] font-medium h-auto py-1 border-glorious_border font-mono rounded-xs;
+}
+.badge {
+  @apply uppercase text-[11px] h-auto py-1 bg-[#e5e5e5] font-mono  border-none rounded-xs;
+}
+.btn-dusk {
+  @apply border-0 bg-black/10;
 }
 p {
   font-family: var(--font-glorious);
@@ -43,6 +53,24 @@ p {
 }
 .desktop-menu-link {
   @apply uppercase text-[12px] font-mono relative pl-3 before:absolute before:w-[5px] before:h-[5px] before:bg-foreground before:rounded-full before:left-0 before:top-1/2 before:-translate-y-1/2 before:opacity-0 hover:before:opacity-100 before:transition-all before:duration-100 before:ease-in-out;
+}
+.about-nav li {
+  @apply relative pl-3 opacity-70 before:absolute before:w-[5px] before:h-[5px] before:bg-foreground before:rounded-full before:left-0 before:top-1/2 before:-translate-y-1/2 before:opacity-0 hover:before:opacity-100 before:transition-all before:duration-100 before:ease-in-out;
+}
+.about-nav li.active {
+  @apply opacity-100;
+}
+.about-nav li.active::before {
+  @apply opacity-100;
+}
+.filterItem.active {
+  @apply  opacity-100 before:opacity-100;
+  }
+.filterItem {
+  @apply relative pl-3 opacity-70 before:absolute before:w-[5px] before:h-[5px] before:bg-foreground before:rounded-full before:left-0 before:top-1/2 before:-translate-y-1/2 before:opacity-0 hover:before:opacity-100 before:transition-all before:duration-100 before:ease-in-out;
+}
+.filterItem.checked {
+@apply  opacity-100 before:opacity-100;
 }
 .xs-mono {
   @apply uppercase text-[12px] font-mono;
@@ -102,7 +130,6 @@ body {
   position: relative;
   z-index: 10;
   background-color: var(--background);
-  overflow: hidden;
 }
 .motion-div {
   background-color: #1c1c1c;
@@ -154,6 +181,28 @@ body {
 
 .case-content p {
   margin-bottom: 1.2rem;
+}
+
+/* Mobile menu link styles */
+.mobile-menu-link {
+  position: relative;
+  transition: all 0.3s ease;
+}
+
+.mobile-menu-link.current {
+  font-weight: 600;
+}
+
+.mobile-menu-link.current::after {
+  content: '';
+  position: absolute;
+  left: -10px;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 5px;
+  height: 5px;
+  background-color: currentColor;
+  border-radius: 50%;
 }
 
  

@@ -3,13 +3,12 @@
 import { useState, useEffect } from 'react';
 import { client, urlFor } from '../../../lib/sanityClient';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faCaretLeft, faCaretRight, faArrowTurnDownRight } from '@awesome.me/kit-34cea924a0/icons/sharp/light';
+import { faCaretLeft, faCaretRight, faArrowTurnDownRight } from '@awesome.me/kit-34cea924a0/icons/sharp/solid';
 import Link from 'next/link';
 import { motion, useMotionValue, useSpring } from 'framer-motion';
 import { Swiper, SwiperSlide } from 'swiper/react';
-import { Navigation, EffectFade } from 'swiper/modules';
+import { Navigation } from 'swiper/modules';
 import 'swiper/css';
-import 'swiper/css/effect-fade';
 
 const springConfig = { 
   damping: 25,    // Increased from 15 for faster response
@@ -65,7 +64,7 @@ export default function RecentProjects() {
   const ProjectContent = ({ project }) => {
     const SlideContent = () => (
       <div 
-        className="w-full h-[500px] relative group cursor-pointer"
+        className="w-full lg:h-[500px] aspect-video relative group cursor-pointer"
         style={{
           backgroundImage: `url(${urlFor(project.heroImage).url()})`,
           backgroundSize: 'cover',
@@ -107,7 +106,7 @@ export default function RecentProjects() {
 
   return (
     <>
-      <div className="px-4 py-3 border-b border-glorious_border flex justify-between items-center">
+      <div className="lg:px-6 px-4 lg:py-3 py-2 border-b border-glorious_border flex justify-between items-center">
         <p className='section-title-md'>Recent Projects</p>
         <div className="flex gap-4">
           <button onClick={handlePrev} className="xs-mono hover:text-grey transition-colors">
@@ -121,10 +120,12 @@ export default function RecentProjects() {
       <div className="p-4" onMouseMove={handleMouseMove}>
         <Swiper
           onSwiper={setSwiper}
-          modules={[Navigation, EffectFade]}
-          effect="fade"
+          modules={[Navigation]}
           speed={800}
           loop={true}
+          slidesPerView={1}
+          effect="slide"
+          direction="horizontal"
           className="w-full"
         >
           {projects.map((project) => (

@@ -71,7 +71,7 @@ export default function MobileNav({ setIsNavOpen, alwaysWhite }) {
     <div className="lg:hidden">
       <button
         onClick={handleToggle}
-        className={`px-4 py-2 uppercase text-2xl font-medium rounded-full transition-all duration-300 relative z-60 ${
+        className={`uppercase xs-mono font-medium rounded-full transition-all duration-300 relative z-60 ${
           isOpen || alwaysWhite
           ? 'text-white' 
           : 'text-black'
@@ -83,7 +83,7 @@ export default function MobileNav({ setIsNavOpen, alwaysWhite }) {
       <AnimatePresence>
         {isOpen && (
           <motion.div
-            className="text-white fixed inset-0 z-50 pt-40 px-5 bg-foreground"
+            className="fixed inset-0 z-10 pt-40 px-5 bg-glorious"
             initial="initial"
             animate="animate"
             exit="exit"
@@ -93,7 +93,7 @@ export default function MobileNav({ setIsNavOpen, alwaysWhite }) {
               className="flex  h-full"
               variants={navigationVariants}
             >
-              <div className="relative">
+              <div className="relative w-full">
                 <NavigationLinks />
               </div>
             </motion.div>

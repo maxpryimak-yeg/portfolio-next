@@ -9,7 +9,7 @@
     "lint": "next lint"
   },
   "dependencies": {
-    "@awesome.me/kit-34cea924a0": "^1.0.4",
+    "@awesome.me/kit-34cea924a0": "^1.0.0",
     "@formspree/react": "^2.5.1",
     "@fortawesome/fontawesome-svg-core": "^6.7.2",
     "@fortawesome/react-fontawesome": "^0.2.2",

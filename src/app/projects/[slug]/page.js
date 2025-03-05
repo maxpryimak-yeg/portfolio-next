@@ -2,8 +2,8 @@ import { client } from './../../../../lib/sanityClient';
 import AnimatedHeadline from '../../components/AnimatedHeadline';
 import Image from 'next/image';
 import { PortableText } from '@portabletext/react';
-import ProgressCircle from '../../components/ProgressCircle';
 import FadeInBottom from '../../components/FadeInBottom';
+import Navbar from '../../components/Navbar';
 
 export default async function ProjectPage({ params }) {
   const { slug } = await Promise.resolve(params); // Ensure compatibility with Next.js
@@ -170,98 +170,52 @@ export default async function ProjectPage({ params }) {
   }
 
   return (
-    <div className="lg:px-16 px-5 pb-20">
-      <ProgressCircle />
+    <div>
+      <Navbar />
       {/* Title and Main Headline */}
-      <section className="md:py-60 pt-40 pb-20 flex-col md:flex-row flex">
+      <section className="lg:pt-32 lg:pb-40 pt-24 pb-20 border-b border-glorious_border lg:px-6 px-4 flex lg:flex-row flex-col">
 
-        <h1 className="flex-1 uppercase font-bold md:mb-4 mb-20">
+        <h1 className="w-sm md:mb-4 lg:mb-20 mb-10 xs-mono ">
         <FadeInBottom>
-          <span className="block relative before:block before:absolute before:w-5 before:h-5 before:bg-glorious before:border before:border-foreground before:left-0 pl-8 before:top-2/4 before:-translate-y-2/4 before:rounded-full">
+          <span className="xs-mono pl-3 block relative before:absolute before:w-[5px] before:h-[5px] before:bg-foreground before:rounded-full before:left-0 before:top-1/2 before:-translate-y-1/2">
             Case study
           </span>
           {project.title}
           </FadeInBottom>
         </h1>
 
-        <div className="md:max-w-[60%] w-full">
+        <div className="flex-1">
           {project.mainHeadline && (
             <AnimatedHeadline tag="span" text={project.mainHeadline} />
           )}
-        </div>
-      </section>
-
-      {/* Main Picture Section */}
-      <section>
-        {project.mainPicture?.asset && (
-          <FadeInBottom delay={0.4} disableWhileInView>
-          <figure className="relative overflow-hidden w-full">
-            {/* Aspect Ratio Wrapper */}
-            <div
-              style={{
-                paddingTop: `${
-                  (project.mainPicture.asset.metadata.dimensions.height /
-                    project.mainPicture.asset.metadata.dimensions.width) *
-                  100
-                }%`,
-              }}
-            ></div>
-
-            {/* Background Color Overlay */}
-            {project.mainPicture.asset.metadata.palette?.dominant?.background && (
-              <div
-                className="absolute inset-0 opacity-50"
-                style={{
-                  backgroundColor:
-                    project.mainPicture.asset.metadata.palette.dominant.background,
-                }}
-              ></div>
-            )}
-
-            {/* Image with next/image */}
-            <Image
-              src={project.mainPicture.asset.url}
-              alt={project.title || 'Project Image'}
-              width={project.mainPicture.asset.metadata.dimensions.width}
-              height={project.mainPicture.asset.metadata.dimensions.height}
-              placeholder="blur"
-              blurDataURL={project.mainPicture.asset.metadata.lqip}
-              quality={85}
-              priority={false} // Set priority to false unless this is a critical image
-              style={{ objectFit: 'cover', objectPosition: 'center' }}
-              className="absolute inset-0 w-full h-full transition-opacity duration-700 ease-out opacity-100"
-            />
-          </figure>
+          <FadeInBottom>
+          {project.innerServices && project.innerServices.length > 0 && (
+            <ul className="mt-10 list-none flex gap-2">
+              {project.innerServices.map((service, index) => (
+                <li className="badge" key={index}>
+                  {service}
+                </li>
+              ))}
+            </ul>
+          )}
           </FadeInBottom>
-        )}
-      </section>
-
-      <section className="md:pt-20 pt-10 md:pb-60 pb-32 flex flex-col md:flex-row">
-      <div className='w-6/12 flex flex-col justify-between'>
-        <p className="uppercase font-bold md:mb-4 mb-10 block relative before:block before:absolute before:border before:border-foreground  before:w-5 before:h-5 before:bg-glorious before:left-0 pl-8 before:top-2/4 before:-translate-y-2/4 before:rounded-full">
-        The Ask
-          </p>
-        <div className="hidden md:flex flex-col lg:gap-8 gap-5">
-          <p className='uppercase'>Services</p>
-        <ul className="list-none">
-            {project.innerServices.map((service, index) => (
-              <li key={index} className="">
-                {service}
-              </li>
-            ))}
-          </ul>
-          </div>
-          </div>
-          <div className="w-full max-w-5xl">
-        <h2 className='mb-4 font-medium'>{project.askSubHeading}</h2>
-        <div className="text-grey  leading-[2.5rem] case-content">
-  <PortableText value={project.askContent} />
-</div>
         </div>
       </section>
-
-      <section className='flex flex-col lg:gap-8 gap-5'>
-        {project.firstImageAsk?.asset && (
+      
+      <section className="border-b border-glorious_border">
+      <div className='flex lg:flex-row flex-col'>
+        <div className="lg:w-md w-full lg:border-r border-glorious_border p-4 lg:p-6">
+          
+        <div className="sticky top-[91.5px] lg:pb-20 flex flex-col gap-4">
+          <p className='section-title-md lg:mb-6 mb-3'>The Ask</p>
+          <p className='font-medium'>{project.askSubHeading}</p>
+          <PortableText value={project.askContent} />
+          </div>
+        </div>
+        <div className="flex-1 p-4 lg:p-6 flex gap-4 flex-col">
+          
+          {project.firstImageAsk?.asset && (
+            <div className="bg-[#e7e7e7]  p-2 lg:px-20 lg:py-12">
           <figure className="relative overflow-hidden w-full">
             {/* Aspect Ratio Wrapper */}
             <div
@@ -299,9 +253,12 @@ export default async function ProjectPage({ params }) {
               className="absolute inset-0 w-full h-full transition-opacity duration-700 ease-out opacity-100"
             />
           </figure>
+          </div>
         )}
-        <div className='flex gap-5 lg:gap-8 flex-col md:flex-row'>
-        {project.secondImageAsk?.asset && (
+          
+          
+          {project.secondImageAsk?.asset && (
+            <div className="bg-[#e7e7e7]  p-2 lg:px-20 lg:py-12">
           <figure className="relative overflow-hidden w-full">
             {/* Aspect Ratio Wrapper */}
             <div
@@ -339,8 +296,12 @@ export default async function ProjectPage({ params }) {
               className="absolute inset-0 w-full h-full transition-opacity duration-700 ease-out opacity-100"
             />
           </figure>
-        )}
-         {project.thirdImageAsk?.asset && (
+          </div>
+        )}  
+          
+          
+          {project.thirdImageAsk?.asset && (
+            <div className="bg-[#e7e7e7]  p-2 lg:px-20 lg:py-12">
           <figure className="relative overflow-hidden w-full">
             {/* Aspect Ratio Wrapper */}
             <div
@@ -378,24 +339,26 @@ export default async function ProjectPage({ params }) {
               className="absolute inset-0 w-full h-full transition-opacity duration-700 ease-out opacity-100"
             />
           </figure>
-        )}
-        </div>
-      </section>
-      <section className="md:pt-20 pt-10 md:pb-60 pb-32 flex flex-col md:flex-row">
-        <div className='w-6/12'>
-        <p className="uppercase font-bold md:mb-4 mb-10 block relative before:block before:absolute before:border before:border-foreground  before:w-5 before:h-5 before:bg-glorious before:left-0 pl-8 before:top-2/4 before:-translate-y-2/4 before:rounded-full">
-        The Delivery
-        </p>
           </div>
-        <div className="w-full max-w-5xl">
-        <h2 className='mb-4 font-medium'>{project.deliverySubHeading}</h2>
-        <div className="text-grey  leading-[2.5rem] case-content">
-  <PortableText value={project.deliveryContent} />
-</div>
+        )}
+          
+        </div>
         </div>
       </section>
-      <section className='flex flex-col gap-5 lg:gap-8'>
-        {project.firstImageDelivery?.asset && (
+      <section>
+      <div className='flex lg:flex-row flex-col'>
+        <div className="lg:w-md w-full lg:border-r border-glorious_border p-4 lg:p-6">
+          
+          <div className="sticky top-[91.5px] lg:pb-20  flex flex-col gap-4">
+          <p className='section-title-md lg:mb-6 mb-3'>The Delivery</p>
+          <p className='font-medium'>{project.deliverySubHeading}</p>
+          <PortableText value={project.deliveryContent} />
+          </div>
+        </div>
+        <div className="flex-1 p-4 lg:p-6 flex gap-4 flex-col">
+          
+          {project.firstImageDelivery?.asset && (
+            <div className="bg-[#e7e7e7]  p-2 lg:px-20 lg:py-12">
           <figure className="relative overflow-hidden w-full">
             {/* Aspect Ratio Wrapper */}
             <div
@@ -433,9 +396,12 @@ export default async function ProjectPage({ params }) {
               className="absolute inset-0 w-full h-full transition-opacity duration-700 ease-out opacity-100"
             />
           </figure>
+          </div>
         )}
-        <div className='flex gap-5 lg:gap-8 flex-col md:flex-row'>
-         {project.secondImageDelivery?.asset && (
+          
+          
+          {project.secondImageDelivery?.asset && (
+            <div className="bg-[#e7e7e7]  p-2 lg:px-20 lg:py-12">
           <figure className="relative overflow-hidden w-full">
             {/* Aspect Ratio Wrapper */}
             <div
@@ -473,8 +439,12 @@ export default async function ProjectPage({ params }) {
               className="absolute inset-0 w-full h-full transition-opacity duration-700 ease-out opacity-100"
             />
           </figure>
+          </div>
         )}
-        {project.thirdImageDelivery?.asset && (
+          
+          
+          {project.thirdImageDelivery?.asset && (
+            <div className="bg-[#e7e7e7]  p-2 lg:px-20 lg:py-12">
           <figure className="relative overflow-hidden w-full">
             {/* Aspect Ratio Wrapper */}
             <div
@@ -512,34 +482,25 @@ export default async function ProjectPage({ params }) {
               className="absolute inset-0 w-full h-full transition-opacity duration-700 ease-out opacity-100"
             />
           </figure>
-        )}
-        </div>
-      
-      </section>
-      <section className="md:pt-20 pt-10 md:pb-60 pb-32 flex flex-col md:flex-row">
-        <div className='w-6/12'>
-        <p className="uppercase font-bold md:mb-4 mb-10 block relative before:block before:absolute before:border before:border-foreground  before:w-5 before:h-5 before:bg-glorious before:left-0 pl-8 before:top-2/4 before:-translate-y-2/4 before:rounded-full">
-        Outcome
-        </p>
           </div>
-        <div className="w-full max-w-5xl">
-        <h2 className='mb-4 font-medium'>{project.takeawaySubHeading}</h2>
-        <div className="text-grey  leading-[2.5rem] case-content">
-  <PortableText value={project.takeawayContent} />
-</div>
+        )}
+          
+        </div>
         </div>
       </section>
-      <section className='flex flex-col gap-5 lg:gap-8'>
+      <section className='border-y border-glorious_border flex flex-col gap-5 lg:gap-8'>
         {project.firstImageTakeaway?.asset && (
-          <figure className="relative overflow-hidden w-full">
+          <figure className="relative overflow-hidden w-full lg:max-h-[800px] max-h-[380px]">
             {/* Aspect Ratio Wrapper */}
             <div
+              className="lg:max-h-[800px] max-h-[380px]"
               style={{
                 paddingTop: `${
                   (project.firstImageTakeaway.asset.metadata.dimensions.height /
                     project.firstImageTakeaway.asset.metadata.dimensions.width) *
                   100
                 }%`,
+                maxHeight: '100%'
               }}
             ></div>
 
@@ -563,91 +524,26 @@ export default async function ProjectPage({ params }) {
               placeholder="blur"
               blurDataURL={project.firstImageTakeaway.asset.metadata.lqip}
               quality={85}
-              priority={false} // Set priority to false unless this is a critical image
+              priority={false}
               style={{ objectFit: 'cover', objectPosition: 'center' }}
-              className="absolute inset-0 w-full h-full transition-opacity duration-700 ease-out opacity-100"
+              className="absolute inset-0 w-full h-full transition-opacity duration-700 ease-out opacity-100 lg:max-h-[800px] max-h-[380px]"
             />
           </figure>
         )}
-        <div className='flex gap-5 lg:gap-8 flex-col md:flex-row'>
-        {project.secondImageTakeaway?.asset && (
-          <figure className="relative overflow-hidden w-full">
-            {/* Aspect Ratio Wrapper */}
-            <div
-              style={{
-                paddingTop: `${
-                  (project.secondImageTakeaway.asset.metadata.dimensions.height /
-                    project.secondImageTakeaway.asset.metadata.dimensions.width) *
-                  100
-                }%`,
-              }}
-            ></div>
-
-            {/* Background Color Overlay */}
-            {project.secondImageTakeaway.asset.metadata.palette?.dominant?.background && (
-              <div
-                className="absolute inset-0 opacity-50"
-                style={{
-                  backgroundColor:
-                    project.secondImageTakeaway.asset.metadata.palette.dominant.background,
-                }}
-              ></div>
-            )}
-
-            {/* Image with next/image */}
-            <Image
-              src={project.secondImageTakeaway.asset.url}
-              alt={project.title || 'Project Image'}
-              width={project.secondImageTakeaway.asset.metadata.dimensions.width}
-              height={project.secondImageTakeaway.asset.metadata.dimensions.height}
-              placeholder="blur"
-              blurDataURL={project.secondImageTakeaway.asset.metadata.lqip}
-              quality={85}
-              priority={false} // Set priority to false unless this is a critical image
-              style={{ objectFit: 'cover', objectPosition: 'center' }}
-              className="absolute inset-0 w-full h-full transition-opacity duration-700 ease-out opacity-100"
-            />
-          </figure>
-        )}
-         {project.thirdImageTakeaway?.asset && (
-          <figure className="relative overflow-hidden w-full">
-            {/* Aspect Ratio Wrapper */}
-            <div
-              style={{
-                paddingTop: `${
-                  (project.thirdImageTakeaway.asset.metadata.dimensions.height /
-                    project.thirdImageTakeaway.asset.metadata.dimensions.width) *
-                  100
-                }%`,
-              }}
-            ></div>
-
-            {/* Background Color Overlay */}
-            {project.thirdImageTakeaway.asset.metadata.palette?.dominant?.background && (
-              <div
-                className="absolute inset-0 opacity-50"
-                style={{
-                  backgroundColor:
-                    project.thirdImageTakeaway.asset.metadata.palette.dominant.background,
-                }}
-              ></div>
-            )}
-
-            {/* Image with next/image */}
-            <Image
-              src={project.thirdImageTakeaway.asset.url}
-              alt={project.title || 'Project Image'}
-              width={project.thirdImageTakeaway.asset.metadata.dimensions.width}
-              height={project.thirdImageTakeaway.asset.metadata.dimensions.height}
-              placeholder="blur"
-              blurDataURL={project.thirdImageTakeaway.asset.metadata.lqip}
-              quality={85}
-              priority={false} // Set priority to false unless this is a critical image
-              style={{ objectFit: 'cover', objectPosition: 'center' }}
-              className="absolute inset-0 w-full h-full transition-opacity duration-700 ease-out opacity-100"
-            />
-          </figure>
-        )}
+      </section>
+      <section>
+      <div className='flex lg:flex-row flex-col'>
+        <div className="w-full lg:w-md border-r border-glorious_border p-4 lg:p-6">
+          
+          <div className="sticky top-[137.5px]">
+          <p className='section-title-md'>Outcome</p>
+          
+          </div>
+        </div>
+        <div className="flex-1 p-4 lg:p-6 flex gap-4 flex-col lg:pb-20 pb-12">
+        <h2 className='mb-4 text-4xl'>{project.takeawaySubHeading}</h2>
+        <PortableText value={project.takeawayContent} />
+        </div>
         </div>
       </section>
     </div>

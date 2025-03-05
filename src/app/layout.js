@@ -25,7 +25,7 @@ const ClientLayout = ({ children }) => {
       </head>
       <body className="antialiased bodyBg">
         <PageAnimatePresence>
-          <div className="relative">
+          <div className="relative border-b border-glorious_border">
             {children}
           </div>
           <FooterContact />

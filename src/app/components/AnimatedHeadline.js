@@ -40,15 +40,15 @@ const AnimatedHeadline = ({ text, duration = 0.6, tag: Tag = 'h1', className = '
   return (
     <Tag
       ref={headlineRef}
-      className={`split-words gap-[0.7rem] text-center flex-wrap flex ${className}`}
+      className={`split-words lg:gap-[0.7rem] gap-[0.4rem] text-center flex-wrap flex ${className}`}
     >
       {words.map((word, index) => (
         <div
           key={index}
-          className="single-word-wrapper relative inline-block h-12 overflow-hidden" // Wrapper for overflow-hidden
+          className="single-word-wrapper relative inline-block lg:h-12 h-8 overflow-hidden" // Wrapper for overflow-hidden
         >
           <motion.div
-            className="single-word-inner relative inline-block whitespace-nowrap  text-5xl leading-3xl" // Inner div for animation
+            className="single-word-inner relative inline-block whitespace-nowrap  lg:text-5xl lg:leading-3xl text-2xl leading-none" // Inner div for animation
             initial="initial"
             animate={isVisible ? 'animate' : 'initial'} // Animate only if visible
             transition={{
