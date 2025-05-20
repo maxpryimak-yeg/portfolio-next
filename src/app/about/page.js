@@ -11,7 +11,13 @@ async function getClients() {
     "logo": logo.asset->url
   }`;
   
-  return await client.fetch(query);
+  const clients = await client.fetch(query);
+  if (clients.length > 0) {
+    const lastClient = clients[clients.length - 1];
+    const restClients = clients.slice(0, -1);
+    return [lastClient, ...restClients];
+  }
+  return clients;
 }
 
 export default async function AboutPage() {
@@ -63,20 +69,20 @@ For us, every project is a chance to build something meaningful. We craft websit
               <p>We&apos;re dedicated to excellence in every project. From the smallest detail to the final launch, quality is at the heart of everything we do.</p>
             </div>
             <div className='w-full'>
-              <h3 className="xs-mono mb-2 lg:mb-4 relative pl-4 before:absolute before:w-[8px] before:h-[8px] before:bg-glorious before:border-black before:border-1 before:rounded-full before:left-0 before:top-1/2 before:-translate-y-1/2">Quality</h3>
-              <p>We&apos;re dedicated to excellence in every project. From the smallest detail to the final launch, quality is at the heart of everything we do.</p>
+              <h3 className="xs-mono mb-2 lg:mb-4 relative pl-4 before:absolute before:w-[8px] before:h-[8px] before:bg-glorious before:border-black before:border-1 before:rounded-full before:left-0 before:top-1/2 before:-translate-y-1/2">Transparency</h3>
+              <p>Open, honest communication is our foundation. We keep clients informed at every step, building trust through clarity and consistency.</p>
             </div>
             <div className='w-full'>
-              <h3 className="xs-mono mb-2 lg:mb-4 relative pl-4 before:absolute before:w-[8px] before:h-[8px] before:bg-glorious before:border-black before:border-1 before:rounded-full before:left-0 before:top-1/2 before:-translate-y-1/2">Quality</h3>
-              <p>We&apos;re dedicated to excellence in every project. From the smallest detail to the final launch, quality is at the heart of everything we do.</p>
+              <h3 className="xs-mono mb-2 lg:mb-4 relative pl-4 before:absolute before:w-[8px] before:h-[8px] before:bg-glorious before:border-black before:border-1 before:rounded-full before:left-0 before:top-1/2 before:-translate-y-1/2">Innovation</h3>
+              <p>In a world that&apos;s constantly changing, we stay ahead by embracing the latest tools and ideas. Innovation drives our solutions and helps our clients stay competitive.</p>
             </div>
             <div className='w-full'>
-              <h3 className="xs-mono mb-2 lg:mb-4 relative pl-4 before:absolute before:w-[8px] before:h-[8px] before:bg-glorious before:border-black before:border-1 before:rounded-full before:left-0 before:top-1/2 before:-translate-y-1/2">Quality</h3>
-              <p>We&apos;re dedicated to excellence in every project. From the smallest detail to the final launch, quality is at the heart of everything we do.</p>
+              <h3 className="xs-mono mb-2 lg:mb-4 relative pl-4 before:absolute before:w-[8px] before:h-[8px] before:bg-glorious before:border-black before:border-1 before:rounded-full before:left-0 before:top-1/2 before:-translate-y-1/2">Collaboration</h3>
+              <p>Our success comes from strong partnerships. We work closely with each client, bringing their vision to life through teamwork and shared goals.</p>
             </div>
             <div className='w-full'>
-              <h3 className="xs-mono mb-2 lg:mb-4 relative pl-4 before:absolute before:w-[8px] before:h-[8px] before:bg-glorious before:border-black before:border-1 before:rounded-full before:left-0 before:top-1/2 before:-translate-y-1/2">Quality</h3>
-              <p>We&apos;re dedicated to excellence in every project. From the smallest detail to the final launch, quality is at the heart of everything we do.</p>
+              <h3 className="xs-mono mb-2 lg:mb-4 relative pl-4 before:absolute before:w-[8px] before:h-[8px] before:bg-glorious before:border-black before:border-1 before:rounded-full before:left-0 before:top-1/2 before:-translate-y-1/2">Flexibility</h3>
+              <p>Every project is unique, and we adapt to meet each client&apos;s needs. Our flexible approach ensures that our solutions are tailored to fit, not forced.</p>
             </div>
         </div>
         <div id="clients" className="lg:px-6 px-4 lg:py-3 py-2 border-t border-glorious_border">
