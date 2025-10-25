@@ -1,7 +1,7 @@
 import { client } from '../../lib/sanityClient';
 
 export default async function sitemap() {
-  const baseUrl = 'https://thegloriousagency.com';
+  const baseUrl = 'https://theglorious.agency';
 
   // Fetch all portfolio projects from Sanity
   const projects = await client.fetch(`

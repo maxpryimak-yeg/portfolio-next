@@ -7,8 +7,8 @@ export default function robots() {
         disallow: ['/api/', '/private/'],
       },
     ],
-    sitemap: 'https://thegloriousagency.com/sitemap.xml',
-    host: 'https://thegloriousagency.com',
+    sitemap: 'https://theglorious.agency/sitemap.xml',
+    host: 'https://theglorious.agency',
   }
 }
 
