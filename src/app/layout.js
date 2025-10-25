@@ -1,4 +1,5 @@
 import "./globals.css";
+import Script from 'next/script';
 import Footer from './components/Footer';
 import FooterContact from './components/FooterContact';
 import PageAnimatePresence from './components/HOC/PageAnimatePresence';
@@ -24,6 +25,23 @@ const ClientLayout = ({ children }) => {
         <link rel="stylesheet" href="https://use.typekit.net/muo6nza.css" />
       </head>
       <body className="antialiased bodyBg">
+        {/* Google Analytics */}
+        <Script
+          strategy="afterInteractive"
+          src="https://www.googletagmanager.com/gtag/js?id=G-0V3VT30J5C"
+        />
+        <Script
+          id="google-analytics"
+          strategy="afterInteractive"
+          dangerouslySetInnerHTML={{
+            __html: `
+              window.dataLayer = window.dataLayer || [];
+              function gtag(){dataLayer.push(arguments);}
+              gtag('js', new Date());
+              gtag('config', 'G-0V3VT30J5C');
+            `,
+          }}
+        />
         <PageAnimatePresence>
           <div className="relative border-b border-glorious_border">
             {children}
